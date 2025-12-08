@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Notes Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Indian Currency Note Classifier</h1>
+
+    
+    <form method="POST" enctype="multipart/form-data">
+        
+        <label for="image">Upload an image of an Indian currency note:</label>
+        
+        <input type="file" name="image" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <section>
+    <article>
+    {% if prediction %}
+    <h3>Predicted Denomination: {{ prediction }}</h3>
+    <h4>Top 5 Predictions:</h4>
+    <ul>
+        {% for label, prob in top_5 %}
+        <li>{{ label }}: {{ prob | round(2) }}</li>
+        {% endfor %}
+    </ul>
+</article>
+    <article>
+    <img src="{{ url_for('static', filename=request.files['image'].filename) }}" alt="Uploaded Image" style="max-width: 300px;">
+    
+    <h3>Uploaded Image</h3>
+    {% endif %}
+    </article>
+</section>
+
+</body>
+</html>
