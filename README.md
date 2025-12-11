@@ -51,12 +51,6 @@ The classifier predicts the following note categories:
 - **Flask**
 - **HTML / CSS (Frontend)**
 
----
-
-## 📁 Project Structure
-
-
----
 
 ## 🚀 How to Run the Project Locally
 
